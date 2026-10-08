@@ -66,6 +66,22 @@ footer {
   background-color: var(--color-surface);
 }
 
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
+}
+
 
 .site-header {
   max-width: var(--container-width);
@@ -153,7 +169,15 @@ section {
    3. Общие элементы интерфейса
    =============================== */
 
-a {
+html {
+  scroll-behavior: smooth;
+}
+
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+}
+   a {
   color: var(--color-primary);
 }
 
