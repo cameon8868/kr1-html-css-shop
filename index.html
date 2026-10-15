@@ -43,91 +43,171 @@
 
 
   <main>
-      <section class="hero">
-        <h1>Учебный интернет-магазин</h1>
-        <p>
-          Это стартовая страница учебного frontend-проекта.
-          В дальнейшем на её основе будет разработан многостраничный сайт
-          интернет-магазина или каталога услуг.
-        </p>
-        <a class="button" href="#popular">Перейти к товарам</a>
-      </section>
-      
-      <section class="section" id="advantages">
-        <h2>Преимущества проекта</h2>
+        <section class="hero">
+          <h1>Учебный интернет-магазин</h1>
+          <p>
+            Это стартовая страница учебного frontend-проекта.
+            В дальнейшем на её основе будет разработан многостраничный сайт
+            интернет-магазина или каталога услуг.
+          </p>
+          <a class="button" href="#popular">Перейти к товарам</a>
+        </section>
+        
+        <section class="section" id="advantages">
+          <h2>Преимущества проекта</h2>
 
-        <ul class="advantages-list">
-          <li>понятная HTML-структура;</li>
-          <li>семантические блоки страницы;</li>
-          <li>подключение внешнего CSS-файла;</li>
-          <li>подготовка к разработке многостраничного сайта.</li>
-        </ul>
-      </section>
-      <section class="section" id="popular">
-      <div class="products-grid">
-        <h2>Популярные товары</h2>
+          <ul class="advantages-list">
+            <li>понятная HTML-структура;</li>
+            <li>семантические блоки страницы;</li>
+            <li>подключение внешнего CSS-файла;</li>
+            <li>подготовка к разработке многостраничного сайта.</li>
+          </ul>
+        </section>
+        <section class="section" id="popular">
+        <h2>Популярные товары</h2>        
+        <div class="products-grid">
 
           <article class="product-card">
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
+            <img class="product-card__image" src="image/mouse.jpg" alt="Игровая мышка">
+            <h3 class="product-card__title">Игровая мышка</h3>
+            <p class="product-card__description">Отлично подходит для игроков!</p>
+
             <button
-              class="button product-card__button"
+              class="product-card__more-btn"
               type="button"
-              data-product="Товар 1"
+              data-specs='{
+                "Тип подключения": "Проводная (USB)",
+                "Тип сенсора": "Оптический",
+                "Макс. DPI": "1600",
+                "Количество кнопок": "6",
+                "Колесо прокрутки": "Есть",
+                "Вес": "70 г",
+                "Подсветка": "RGB",
+                "Совместимость": "Windows, macOS, Linux"
+              }'
+              data-title="Игровая мышка"
             >
+              Характеристики
+            </button>
+
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <button class="button product-card__button" type="button" data-product="Товар 1">
               Заказать
             </button>
           </article>
 
-
           <article class="product-card">
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
+            <img class="product-card__image" src="image/RTX5090.jpg" alt="RTX 5090">
+            <h3 class="product-card__title">RTX5090</h3>
+            <p class="product-card__description">
+              Флагманская видеокарта NVIDIA на архитектуре Blackwell, предназначенная для 4K-гейминга, трассировки лучей и задач ИИ.
+            </p>
+
+            <button
+              class="product-card__more-btn"
+              type="button"
+              data-specs='{
+                "Производитель": "NVIDIA",
+                "Архитектура": "Blackwell",
+                "Память": "32 ГБ GDDR7",
+                "Интерфейс": "PCIe 5.0",
+                "TDP": "450 Вт",
+                "Рекомендуемый БП": "1000 Вт",
+                "Гарантия": "3 года"
+              }'
+              data-title="Видеокарта RTX 5090"
+            >
+              Характеристики
+            </button>
+
+            <p class="product-card__price">Цена: 100500 руб.</p>
             <button class="button product-card__button" type="button" data-product="Товар 2">
               Заказать
             </button>
           </article>
 
           <article class="product-card">
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <img class="product-card__image" src="image/WifiAdapter.jpg" alt="Wi-Fi адаптер">
+            <h3 class="product-card__title">Wifi Адаптер</h3>
+            <p class="product-card__description">Для хорошей передачи wifi.</p>
+
+            <button
+              class="product-card__more-btn"
+              type="button"
+              data-specs='{
+                "Интерфейс": "USB 3.0",
+                "Стандарт": "Wi-Fi 6 (802.11ax)",
+                "Скорость": "до 1800 Мбит/с",
+                "Диапазоны": "2.4 ГГц + 5 ГГц",
+                "Антенна": "Внешняя, съёмная"
+              }'
+              data-title="Wi-Fi адаптер"
+            >
+              Характеристики
+            </button>
+
             <p class="product-card__price">Цена: 2000 руб.</p>
             <button class="button product-card__button" type="button" data-product="Товар 3">
               Заказать
             </button>
           </article>
+
         </div>
-      </section>
+        </section>
 
 
-      <section>
-        <h2>Главная страница проекта</h2>
-        <p>
-          Это стартовая страница учебного frontend-проекта.
-          В дальнейшем здесь будет разработан многостраничный сайт
-          интернет-магазина или каталога услуг.
-        </p>
-      </section>
-
-      <section>
-      <h2>О проекте</h2>
+        <section>
+          <h2>Главная страница проекта</h2>
           <p>
-          В рамках данного проекта будет разработан многостраничный сайт
-          интернет-магазина или каталога услуг. Проект будет постепенно
-          расширяться на следующих практических занятиях.
+            Это стартовая страница учебного frontend-проекта.
+            В дальнейшем здесь будет разработан многостраничный сайт
+            интернет-магазина или каталога услуг.
           </p>
-      </section>
+        </section>
+          <aside class="aside-info">
+            <h2>Информация для студентов</h2>
+            <p>
+              На следующих практических занятиях этот проект будет расширяться:
+              появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
+              БЭМ-структура и адаптивная версия сайта.
+            </p>
+          </aside>
 
-      <aside class="aside-info">
-        <h2>Информация для студентов</h2>
-        <p>
-          На следующих практических занятиях этот проект будет расширяться:
-          появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-          БЭМ-структура и адаптивная версия сайта.
-        </p>
-      </aside>
+
+        <section>
+        <h2>О проекте</h2>
+            <p>
+            В рамках данного проекта будет разработан многостраничный сайт
+            интернет-магазина или каталога услуг. Проект будет постепенно
+            расширяться на следующих практических занятиях.
+            </p>
+        </section>
+        <section class="faq" aria-labelledby="faq-title">
+          <h2 class="faq__title" id="faq-title">FAQ</h2>
+
+        <div class="faq__list">
+          <details class="faq__item">
+            <summary class="faq__question">Как оформить заказ?</summary>
+        <div class="faq__answer">
+          <p>Выберите товар, нажмите «Заказать», заполните форму и подтвердите заявку.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Сколько стоит доставка?</summary>
+        <div class="faq__answer">
+          <p>Доставка по городу — 300 руб., при заказе от 5000 руб. — бесплатно.</p>
+        </div>
+      </details>
+
+      <details class="faq__item">
+        <summary class="faq__question">Можно ли вернуть товар?</summary>
+        <div class="faq__answer">
+          <p>Да, в течение 14 дней с момента покупки при сохранении упаковки.</p>
+        </div>
+      </details>
+    </div>
+  </section>
   </main>
 
     <footer id="contacts">
@@ -136,44 +216,67 @@
     </footer>
 
 
-<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-  <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
-        <form class="order-form" id="order-form" action="#" method="post" novalidate>
-          <input id="selected-product" name="selected-product" type="hidden">
-            <div class="order-form__field">
-              <label class="order-form__label" for="order-name">Имя</label>
-              <input
-                class="order-form__input"
-                id="order-name"
-                name="name"
-                type="text"
-                required
-              >
-            </div>
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+          <form class="order-form" id="order-form" action="#" method="post" novalidate>
+            <input id="selected-product" name="selected-product" type="hidden">
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-name">Имя</label>
+                <input
+                  class="order-form__input"
+                  id="order-name"
+                  name="name"
+                  type="text"
+                  required
+                >
+              </div>
 
-            <div class="order-form__field">
-              <label class="order-form__label" for="order-email">E-mail</label>
-              <input
-                class="order-form__input"
-                id="order-email"
-                name="email"
-                type="email"
-                required
-              >
-            </div>
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-email">E-mail</label>
+                <input
+                  class="order-form__input"
+                  id="order-email"
+                  name="email"
+                  type="email"
+                  required
+                >
+              </div>
 
-            <div class="order-form__actions">
-              <button class="button button--secondary" type="button", id="close-order-dialog">
-                Закрыть
-              </button>
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-address">Адрес доставки</label>
+                <textarea
+                  class="order-form__input"
+                  id="order-address"
+                  name="address"
+                  rows="3"
+                  placeholder="Город, улица, дом, квартира"
+                  required
+                ></textarea>
+              </div>
 
-              <button class="button button--primary" type="submit">
-                Отправить заявку
-              </button>
-              
+              <div class="order-form__actions">
+                <button class="button button--secondary" type="button", id="close-order-dialog">
+                  Закрыть
+                </button>
 
-            </div>
-    </form>
+                <button class="button button--primary" type="submit">
+                  Отправить заявку
+                </button>
+                
+
+              </div>
+          </form>
+  </dialog>
+
+  <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-dialog-title">
+    <div class="specs-dialog__header">
+      <h2 class="specs-dialog__title" id="specs-dialog-title"></h2>
+      <button class="specs-dialog__close" type="button" aria-label="Закрыть" data-close-specs>×</button>
+    </div>
+    <ul class="specs-dialog__list" id="specs-dialog-list"></ul>
+    <div class="specs-dialog__actions">
+      <button class="button button--secondary" type="button" data-close-specs>Закрыть</button>
+    </div>
   </dialog>
 
   <p class="success-message" id="success-message" hidden>

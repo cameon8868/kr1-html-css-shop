@@ -138,17 +138,31 @@ section {
   margin-bottom: 24px;
 }
 
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background-color: var(--color-bg);
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px); /* жёсткие 280px */
+  gap: var(--space-md, 16px);
+  justify-content: start;
+  align-items: stretch;  
 }
 
+.product-card {
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e5e5;
+  padding: 16px;
+  /* высота подстраивается под содержимое */
+}
+.product-card__image {
+  width: 100%;
+  height: 200px;           
+  object-fit: contain;      
+  object-position: center;
+  display: block;
+  border-radius: var(--radius-sm, 6px);
+  background: #fafafa;  
+}
 .product-card:hover {
   border-color: var(--color-primary);
 }
@@ -169,7 +183,24 @@ section {
 .product-card__description {
   margin: 0;
   color: var(--color-muted);
+
+  /* Обрезка по 2 строкам с троеточием */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* Перенос длинных слов, чтобы не вылезали за карточку */
+  overflow-wrap: anywhere;
+  word-break: break-word;
+
+  /* Больше не задаём фиксированную ширину — карточка сама ограничит */
+  width: auto;
 }
+
+
 
 .product-card__price {
   margin: 0;
@@ -183,6 +214,8 @@ section {
 .product-card__button {
   margin-top: auto;
   align-self: flex-start;
+  text-align: center;
+  width: 100%;
 }
 
 .button {
@@ -245,6 +278,7 @@ section {
 
 .catalog-filters {
   grid-area: filters;
+  align-self: start;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -392,6 +426,15 @@ section h2 {
   margin-top: 0;
 }
 
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
 
 /*
   Поле формы.
@@ -493,4 +536,199 @@ section h2 {
 
 [aria-invalid="true"] {
   border-color: var(--color-danger);
+}
+
+/* ===============================
+   FAQ блок
+   =============================== */
+
+.faq {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+}
+
+.faq__title {
+  margin-top: 0;
+  margin-bottom: var(--space-lg);
+}
+
+.faq__list {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.faq__item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  display: grid;
+  grid-template-rows: auto 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq__item[open] {
+  grid-template-rows: auto 1fr;
+  border-color: var(--color-primary);
+}
+
+.faq__question {
+  padding: var(--space-md);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: "+";
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.faq__item[open] .faq__question::after {
+  content: "−";
+}
+
+.faq__question:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+  border-radius: var(--radius-md);
+}
+
+.faq__answer {
+  overflow: hidden;
+  color: var(--color-muted);
+}
+
+.faq__answer p {
+  margin: 0;
+  padding: 0 var(--space-md) var(--space-md);
+}
+
+/* ===============================
+   Кнопка «Характеристики» в карточке
+   =============================== */
+
+.product-card__more-btn {
+  margin-top: var(--space-sm);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: left;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.product-card__more-btn:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.product-card__more-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===============================
+   Модальное окно характеристик
+   =============================== */
+
+.specs-dialog {
+  width: min(100% - 32px, 520px);
+  max-height: 85vh;
+  padding: var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.specs-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.specs-dialog__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.specs-dialog__title {
+  margin: 0;
+  font-size: 20px;
+}
+
+.specs-dialog__close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.specs-dialog__close:hover {
+  background: var(--color-border);
+}
+
+.specs-dialog__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.specs-dialog__list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.specs-dialog__list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 14px;
+}
+
+.specs-dialog__list li span {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.specs-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
 }
