@@ -6,18 +6,16 @@
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
-
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item">
-            <a class="site-nav__link"  href="index.html">
-              Главная
-            </a>
+            <a class="site-nav__link" href="index.html">Главная</a>
           </li>
           <li class="site-nav__item">
             <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
@@ -26,9 +24,7 @@
             <a class="site-nav__link" href="contacts.html">Контакты</a>
           </li>
           <li class="site-nav__item">
-            <a class="site-nav__link" href="index.html#popular">
-              Популярные товары
-            </a>
+            <a class="site-nav__link" href="index.html#popular">Популярные товары</a>
           </li>
         </ul>
       </nav>
@@ -41,52 +37,54 @@
       <span class="breadcrumbs__current">Каталог</span>
     </nav>
 
-
-      <section class="catalog-layout">
+    <section class="catalog-layout">
       <aside class="catalog-filters">
         <h2>Фильтры</h2>
-
         <form class="filters-form" action="#" method="get">
           <fieldset>
             <legend>Категория</legend>
-
-            <label>
-              <input type="checkbox" name="category" value="all">
-              Все товары
-            </label>
-
-            <label>
-              <input type="checkbox" name="category" value="popular">
-              Популярные
-            </label>
-
-            <label>
-              <input type="checkbox" name="category" value="new">
-              Новинки
-            </label>
+            <label><input type="checkbox" name="category" value="all"> Все товары</label>
+            <label><input type="checkbox" name="category" value="popular"> Популярные</label>
+            <label><input type="checkbox" name="category" value="new"> Новинки</label>
           </fieldset>
-
           <fieldset>
             <legend>Цена</legend>
-
             <label for="price-from">От</label>
             <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
             <label for="price-to">До</label>
             <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
-
           <button class="button" type="submit">Применить</button>
         </form>
       </aside>
 
-      <section class="catalog-products">
+      <section >
         <h2>Список товаров</h2>
-
         <div class="products-grid">
+
           <article class="product-card">
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <img class="product-card__image" src="image/mouse.jpg" alt="Игровая мышка">
+            <h3 class="product-card__title">Игровая мышка</h3>
+            <p class="product-card__description">Отлично подходит для игроков!</p>
+
+            <button
+              class="product-card__more-btn"
+              type="button"
+              data-specs='{
+                "Тип подключения": "Проводная (USB)",
+                "Тип сенсора": "Оптический",
+                "Макс. DPI": "1600",
+                "Количество кнопок": "6",
+                "Колесо прокрутки": "Есть",
+                "Вес": "70 г",
+                "Подсветка": "RGB",
+                "Совместимость": "Windows, macOS, Linux"
+              }'
+              data-title="Игровая мышка"
+            >
+              Характеристики
+            </button>
+
             <p class="product-card__price">Цена: 1000 руб.</p>
             <button class="button product-card__button" type="button" data-product="Товар 1">
               Заказать
@@ -94,22 +92,61 @@
           </article>
 
           <article class="product-card">
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
+            <img class="product-card__image" src="image/RTX5090.jpg" alt="RTX 5090">
+            <h3 class="product-card__title">RTX5090</h3>
+            <p class="product-card__description">
+              Флагманская видеокарта NVIDIA на архитектуре Blackwell, предназначенная для 4K-гейминга, трассировки лучей и задач ИИ.
+            </p>
+
+            <button
+              class="product-card__more-btn"
+              type="button"
+              data-specs='{
+                "Производитель": "NVIDIA",
+                "Архитектура": "Blackwell",
+                "Память": "32 ГБ GDDR7",
+                "Интерфейс": "PCIe 5.0",
+                "TDP": "450 Вт",
+                "Рекомендуемый БП": "1000 Вт",
+                "Гарантия": "3 года"
+              }'
+              data-title="Видеокарта RTX 5090"
+            >
+              Характеристики
+            </button>
+
+            <p class="product-card__price">Цена: 100500 руб.</p>
             <button class="button product-card__button" type="button" data-product="Товар 2">
               Заказать
             </button>
           </article>
 
           <article class="product-card">
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <img class="product-card__image" src="image/WifiAdapter.jpg" alt="Wi-Fi адаптер">
+            <h3 class="product-card__title">Wifi Адаптер</h3>
+            <p class="product-card__description">Для хорошей передачи wifi.</p>
+
+            <button
+              class="product-card__more-btn"
+              type="button"
+              data-specs='{
+                "Интерфейс": "USB 3.0",
+                "Стандарт": "Wi-Fi 6 (802.11ax)",
+                "Скорость": "до 1800 Мбит/с",
+                "Диапазоны": "2.4 ГГц + 5 ГГц",
+                "Антенна": "Внешняя, съёмная"
+              }'
+              data-title="Wi-Fi адаптер"
+            >
+              Характеристики
+            </button>
+
             <p class="product-card__price">Цена: 2000 руб.</p>
             <button class="button product-card__button" type="button" data-product="Товар 3">
               Заказать
             </button>
           </article>
+
         </div>
       </section>
     </section>
@@ -122,36 +159,80 @@
         подробные карточки.
       </p>
     </section>
-
-    <section class="section">
-      <h2>Список товаров</h2>
-
-      <article class="product-card">
-        <h3>Товар 1</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 1000 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
-
-      <article class="product-card">
-        <h3>Товар 2</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 1500 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
-
-      <article class="product-card">
-        <h3>Товар 3</h3>
-        <p>Краткое описание учебного товара.</p>
-        <p>Цена: 2000 руб.</p>
-        <a class="button" href="index.html#popular">Подробнее</a>
-      </article>
-    </section>
   </main>
 
   <footer>
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
+
+  <!-- Модалка заказа -->
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+          <form class="order-form" id="order-form" action="#" method="post" novalidate>
+            <input id="selected-product" name="selected-product" type="hidden">
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-name">Имя</label>
+                <input
+                  class="order-form__input"
+                  id="order-name"
+                  name="name"
+                  type="text"
+                  required
+                >
+              </div>
+
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-email">E-mail</label>
+                <input
+                  class="order-form__input"
+                  id="order-email"
+                  name="email"
+                  type="email"
+                  required
+                >
+              </div>
+
+              <div class="order-form__field">
+                <label class="order-form__label" for="order-address">Адрес доставки</label>
+                <textarea
+                  class="order-form__input"
+                  id="order-address"
+                  name="address"
+                  rows="3"
+                  placeholder="Город, улица, дом, квартира"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="order-form__actions">
+                <button class="button button--secondary" type="button", id="close-order-dialog">
+                  Закрыть
+                </button>
+
+                <button class="button button--primary" type="submit">
+                  Отправить заявку
+                </button>
+                
+
+              </div>
+          </form>
+  </dialog>
+
+  <!-- Модалка характеристик -->
+  <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-dialog-title">
+    <div class="specs-dialog__header">
+      <h2 class="specs-dialog__title" id="specs-dialog-title"></h2>
+      <button class="specs-dialog__close" type="button" aria-label="Закрыть" data-close-specs>×</button>
+    </div>
+    <ul class="specs-dialog__list" id="specs-dialog-list"></ul>
+    <div class="specs-dialog__actions">
+      <button class="button button--secondary" type="button" data-close-specs>Закрыть</button>
+    </div>
+  </dialog>
+
+  <p class="success-message" id="success-message" hidden>
+    Форма успешно отправлена!
+  </p>
 </body>
 </html>
