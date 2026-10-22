@@ -102,6 +102,42 @@ specsDialog.querySelectorAll('[data-close-specs]').forEach((el) => {
   el.addEventListener('click', () => specsDialog.close());
 });
 
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+
+  if (specsDialog.open) specsDialog.close();
+  if (orderDialog.open) orderDialog.close();
+});
+
 specsDialog.addEventListener('click', (e) => {
   if (e.target === specsDialog) specsDialog.close();
+});
+
+const orderTitle = document.getElementById('order-dialog-title');
+
+orderButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const productName = card.querySelector('.product-card__title').textContent;
+
+    selectedProductInput.value = productName;
+    orderTitle.textContent = `Заявка: ${productName}`;
+
+    orderDialog.showModal();
+  });
+});
+
+/* ===============================
+   3. Кнопка «Наверх»
+   =============================== */
+
+const scrollTopButton = document.getElementById('scroll-top');
+
+window.addEventListener('scroll', () => {
+  scrollTopButton.classList.toggle('is-visible', window.scrollY > 400);
+}, { passive: true });
+
+scrollTopButton.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
