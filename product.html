@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Товар — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/product.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="index.html">Главная</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="catalog.html">Каталог</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="contacts.html">Контакты</a>
+          </li>
+          <li class="site-nav__item">
+            <a class="site-nav__link" href="help.html">Помощь</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current" id="breadcrumb-current">Товар</span>
+    </nav>
+
+    <!-- Сюда JavaScript выводит выбранный товар -->
+    <div id="product-root"></div>
+
+    <section class="section" id="not-found" hidden>
+      <h1>Товар не найден</h1>
+      <p>Возможно, ссылка устарела или товар удалён.</p>
+      <a class="button" href="index.html#popular">Перейти к товарам</a>
+    </section>
+
+    <section class="section reviews" id="reviews" aria-labelledby="reviews-title" hidden>
+      <h2 id="reviews-title">Отзывы</h2>
+      <p class="reviews__summary" id="reviews-summary"></p>
+      <ul class="reviews__list" id="reviews-list"></ul>
+
+      <form class="review-form" id="review-form" novalidate>
+        <h3 class="review-form__title">Оставить отзыв</h3>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="review-name">Имя</label>
+          <input class="order-form__input" id="review-name" name="author" type="text"
+            placeholder="Как вас зовут" minlength="2" maxlength="40" autocomplete="given-name" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="review-rating">Оценка</label>
+          <select class="order-form__select" id="review-rating" name="rating" required>
+            <option value="">Выберите оценку</option>
+            <option value="5">5 — отлично</option>
+            <option value="4">4 — хорошо</option>
+            <option value="3">3 — нормально</option>
+            <option value="2">2 — плохо</option>
+            <option value="1">1 — ужасно</option>
+          </select>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="review-text">Отзыв</label>
+          <textarea class="order-form__textarea" id="review-text" name="text" rows="4"
+            placeholder="Расскажите, как вам товар (не короче 10 символов)"
+            minlength="10" maxlength="1000" required></textarea>
+        </div>
+
+        <button class="button button--primary" type="submit">Отправить отзыв</button>
+        <p class="review-message" id="review-message" role="status" hidden></p>
+      </form>
+    </section>
+
+    <section class="section" id="related" hidden>
+      <h2>Другие товары</h2>
+      <ul class="related-list" id="related-list"></ul>
+    </section>
+    
+  </main>
+
+  
+
+  <footer id="contacts">
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+
+  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+      <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-name">Имя</label>
+          <input
+            class="order-form__input"
+            id="order-name"
+            name="name"
+            type="text"
+            placeholder="Введите ваше имя"
+            minlength="2"
+            autocomplete="given-name"
+            required
+          >
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-email">E-mail</label>
+          <input
+            class="order-form__input"
+            id="order-email"
+            name="email"
+            type="email"
+            placeholder="example@mail.ru"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-phone">Телефон</label>
+          <input
+            class="order-form__input"
+            id="order-phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            placeholder="+7 (900) 000-00-00"
+            pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+            required
+          >
+          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-date">Дата связи</label>
+          <input class="order-form__input" id="order-date" name="date" type="date">
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-topic">Тема заявки</label>
+          <select class="order-form__select" id="order-topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="product">Заказ товара</option>
+            <option value="consultation">Консультация</option>
+            <option value="delivery">Доставка</option>
+          </select>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="order-comment">Комментарий</label>
+          <textarea
+            class="order-form__textarea"
+            id="order-comment"
+            name="comment"
+            rows="4"
+            placeholder="Укажите дополнительную информацию"
+          ></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--checkbox">
+          <label class="order-form__label">
+            <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных
+          </label>
+        </div>
+
+        <div class="order-form__actions">
+          <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+          <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+      </form>
+  </dialog>
+
+  <p class="success-message" id="success-message" role="status" hidden>
+    Форма успешно отправлена!
+  </p>
+
+  <button class="scroll-top" id="scroll-top" type="button" aria-label="Наверх">↑</button>
+</body>
+</html>
