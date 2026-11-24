@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Контактная информация учебного интернет-магазина.">
   <title>Контакты — Учебный интернет-магазин</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('shop-theme') === 'dark' ? 'dark' : 'light';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/shop.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/consultant.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <a class="site-header__logo" href="index.html">
+        <img src="image/technoshop-logo.svg" alt="" width="40" height="40">
+        <span>TechnoShop</span>
+      </a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
@@ -32,6 +46,12 @@
           </li>
         </ul>
       </nav>
+      <div class="site-header__tools">
+        <button class="button button--secondary" type="button" data-cart-open>Корзина <span data-cart-count>0</span></button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">☾</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -64,9 +84,23 @@
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="index.html">
+        <img src="image/technoshop-logo.svg" alt="" width="32" height="32">
+        <span>TechnoShop</span>
+      </a>
+      <nav class="site-footer__nav" aria-label="Навигация в подвале">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="index.html#popular">Популярные товары</a>
+      </nav>
+      <div class="site-footer__details">
+        <p>&copy; 2026 TechnoShop. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      </div>
+    </div>
   </footer>
     <button class="scroll-top" id="scroll-top" type="button" aria-label="Наверх">
   ↑

@@ -121,7 +121,11 @@ function renderProduct(product) {
   const orderButton = createEl('button', 'button product-page__order', 'Заказать');
   orderButton.type = 'button';
   orderButton.addEventListener('click', () => openOrderDialog(product));
-  info.append(orderButton);
+
+  const cartButton = createEl('button', 'button button--primary product-page__cart', 'В корзину');
+  cartButton.type = 'button';
+  cartButton.dataset.cartAdd = product.id;
+  info.append(orderButton, cartButton);
 
   const specsBlock = createEl('section', 'product-page__specs');
   specsBlock.append(createEl('h2', null, 'Характеристики'));
@@ -156,7 +160,12 @@ function renderRelated(currentId) {
   related.hidden = false;
 }
 
-const id = new URLSearchParams(location.search).get('id');
+const requestedId = new URLSearchParams(location.search).get('id');
+const legacyProductIds = {
+  'Enthernet-кабель': 'ethernet-cable',
+  'flash-drive 64 gb': 'flash-drive-64gb'
+};
+const id = legacyProductIds[requestedId] || requestedId;
 const currentProduct = PRODUCTS.find((p) => p && p.id === id);
 
 if (currentProduct) {

@@ -5,13 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
+  <script>
+    try {
+      document.documentElement.dataset.theme = localStorage.getItem('shop-theme') === 'dark' ? 'dark' : 'light';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  </script>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/shop.js" defer></script>
   <script src="js/main.js" defer></script>
+  <script src="js/consultant.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="index.html">ShopProject</a>
+      <a class="site-header__logo" href="index.html">
+        <img src="image/technoshop-logo.svg" alt="" width="40" height="40">
+        <span>TechnoShop</span>
+      </a>
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item">
@@ -28,6 +41,12 @@
           </li>
         </ul>
       </nav>
+      <div class="site-header__tools">
+        <button class="button button--secondary" type="button" data-cart-open>Корзина <span data-cart-count>0</span></button>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Включить тёмную тему" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">☾</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -40,13 +59,22 @@
     <section class="catalog-layout">
       <aside class="catalog-filters">
         <h2>Фильтры</h2>
-        <form class="filters-form" action="#" method="get">
-          <fieldset>
-            <legend>Категория</legend>
-            <label><input type="checkbox" name="category" value="all"> Все товары</label>
-            <label><input type="checkbox" name="category" value="popular"> Популярные</label>
-            <label><input type="checkbox" name="category" value="new"> Новинки</label>
-          </fieldset>
+        <form class="filters-form" id="filters-form">
+          <div class="filter-field">
+            <label for="catalog-search">Поиск</label>
+            <input id="catalog-search" name="q" type="search" placeholder="Название или описание">
+          </div>
+          <div class="filter-field">
+            <label for="filter-category">Категория</label>
+            <select id="filter-category" name="category">
+              <option value="">Все категории</option>
+              <option value="accessories">Аксессуары</option>
+              <option value="components">Комплектующие</option>
+              <option value="network">Сетевое оборудование</option>
+              <option value="devices">Устройства</option>
+              <option value="storage">Накопители</option>
+            </select>
+          </div>
           <fieldset>
             <legend>Цена</legend>
             <label for="price-from">От</label>
@@ -54,13 +82,25 @@
             <label for="price-to">До</label>
             <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
           </fieldset>
-          <button class="button" type="submit">Применить</button>
+          <label class="filter-check"><input id="filter-popular" type="checkbox"> Популярные</label>
+          <label class="filter-check"><input id="filter-new" type="checkbox"> Новинки</label>
+          <div class="filter-field">
+            <label for="filter-sort">Сортировка</label>
+            <select id="filter-sort">
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="title">По названию</option>
+            </select>
+          </div>
+          <button class="button button--secondary" id="reset-filters" type="reset">Сбросить</button>
         </form>
       </aside>
 
-      <section >
+      <section class="catalog-products">
         <h2>Список товаров</h2>
-        <div class="products-grid">
+        <p id="catalog-result-count" role="status" aria-live="polite"></p>
+        <div class="products-grid" data-product-list>
 
           <article class="product-card">
             <img class="product-card__image" src="image/mouse.jpg" alt="Игровая мышка">
@@ -82,7 +122,7 @@
             <p class="product-card__description">
               Флагманская видеокарта NVIDIA на архитектуре Blackwell, предназначенная для 4K-гейминга, трассировки лучей и задач ИИ.
             </p>
-            <a class="product-card__link" href="product.html?id=mouse">Подробнее</a>
+            <a class="product-card__link" href="product.html?id=rtx5090">Подробнее</a>
 
             <p class="product-card__price">Цена: 100500 руб.</p>
 
@@ -95,7 +135,7 @@
             <img class="product-card__image" src="image/WifiAdapter.jpg" alt="Wi-Fi адаптер">
             <h3 class="product-card__title">Wifi Адаптер</h3>
             <p class="product-card__description">Для хорошей передачи wifi.</p>
-            <a class="product-card__link" href="product.html?id=mouse">Подробнее</a>
+            <a class="product-card__link" href="product.html?id=wifi-adapter">Подробнее</a>
             <p class="product-card__price">Цена: 2000 руб.</p>
 
             <button class="button product-card__button" type="button" data-product="Товар 4">
@@ -143,7 +183,7 @@
             <img class="product-card__image" src="image/flash_drive.jpg" alt="Флеш-накопитель">
             <h3 class="product-card__title">Флеш-накопитель</h3>
             <p class="product-card__description">64 ГБ флеш-накопитель для хранения данных.</p>
-            <a class="product-card__link" href="product.html?id=flash-drive 64 gb">Подробнее</a>
+            <a class="product-card__link" href="product.html?id=flash-drive-64gb">Подробнее</a>
             <p class="product-card__price">Цена: 1500 руб.</p>
 
             <button class="button product-card__button" type="button" data-product="Товар 9">
@@ -167,7 +207,7 @@
             <img class="product-card__image" src="image/Ethernet.jpg" alt="Ethernet-кабель">
             <h3 class="product-card__title">Ethernet-кабель</h3>
             <p class="product-card__description">Качественный Ethernet-кабель для подключения устройств к сети.</p>
-            <a class="product-card__link" href="product.html?id=Enthernet-кабель">Подробнее</a>
+            <a class="product-card__link" href="product.html?id=ethernet-cable">Подробнее</a>
             <p class="product-card__price">Цена: 1000 руб.</p>
 
             <button class="button product-card__button" type="button" data-product="Товар 11">
@@ -179,20 +219,25 @@
         </div>
       </section>
     </section>
-
-    <section class="section">
-      <h1>Каталог товаров</h1>
-      <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
-      </p>
-    </section>
   </main>
 
-  <footer>
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="site-footer__brand" href="index.html">
+        <img src="image/technoshop-logo.svg" alt="" width="32" height="32">
+        <span>TechnoShop</span>
+      </a>
+      <nav class="site-footer__nav" aria-label="Навигация в подвале">
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="index.html#popular">Популярные товары</a>
+      </nav>
+      <div class="site-footer__details">
+        <p>&copy; 2026 TechnoShop. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+      </div>
+    </div>
   </footer>
 
   <!-- Модалка заказа -->
