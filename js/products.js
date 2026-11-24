@@ -9,6 +9,8 @@ const PRODUCTS = [
     title: 'Игровая мышка',
     price: 1000,
     image: 'image/mouse.jpg',
+    category: 'accessories',
+    popular: true,
     short: 'Отлично подходит для игроков!',
     description:
       'Проводная игровая мышка с оптическим сенсором и RGB-подсветкой. ' +
@@ -30,6 +32,9 @@ const PRODUCTS = [
     title: 'Видеокарта RTX 5090',
     price: 100500,
     image: 'image/RTX5090.jpg',
+    category: 'components',
+    popular: true,
+    isNew: true,
     short:
       'Флагманская видеокарта NVIDIA на архитектуре Blackwell, предназначенная для 4K-гейминга, трассировки лучей и задач ИИ.',
     description:
@@ -51,6 +56,7 @@ const PRODUCTS = [
     title: 'Wi-Fi адаптер',
     price: 2000,
     image: 'image/WifiAdapter.jpg',
+    category: 'network',
     short: 'Для хорошей передачи wifi.',
     description:
       'USB-адаптер со стандартом Wi-Fi 6 для стабильного соединения ' +
@@ -68,6 +74,9 @@ const PRODUCTS = [
     title: 'Flipper Zero',
     price: 15000,
     image: 'image/flipper.jpg',
+    category: 'devices',
+    popular: true,
+    isNew: true,
     short: 'Карманный мультитул для изучения радиопротоколов и своих устройств.',
     description:
       'Компактное устройство для изучения и тестирования беспроводных ' +
@@ -91,6 +100,8 @@ const PRODUCTS = [
     title: 'Wi-Fi роутер',
     price: 6500,
     image: 'image/router.jpg',
+    category: 'network',
+    popular: true,
     short: 'Двухдиапазонный роутер Wi-Fi 6 для стабильного интернета дома и в офисе.',
     description:
       'Двухдиапазонный роутер стандарта Wi-Fi 6 для дома и небольшого офиса. ' +
@@ -112,6 +123,7 @@ const PRODUCTS = [
     title: 'Ноутбук',
     price: 75000,
     image: 'image/laptop.jpg',
+    category: 'devices',
     short: 'Производительный ноутбук для учёбы, работы и игр.',
     description:
       'Ноутбук с яркой IPS-матрицей, быстрым SSD и достаточным запасом ' +
@@ -133,7 +145,9 @@ const PRODUCTS = [
     id: 'iphone-15',
     title: 'iPhone 15',
     price: 120000,
-    image: 'image/iphone15.jpg',
+    image: 'image/iphone.jpg',
+    category: 'devices',
+    isNew: true,
     short: 'Флагманский смартфон Apple с улучшенной камерой и производительностью.',
     description:
       'iPhone 15 оснащён новым процессором A17 Bionic, улучшенной камерой ' +
@@ -152,10 +166,11 @@ const PRODUCTS = [
   },
 
   {
-    id: 'Enthernet-кабель',
+    id: 'ethernet-cable',
     title: 'Ethernet-кабель',
     price: 1000,
-    image: 'image/ethernet-cable.jpg',
+    image: 'image/Ethernet.jpg',
+    category: 'network',
     short: 'Качественный Ethernet-кабель для подключения устройств к сети.',
     description:
       'Качественный Ethernet-кабель для подключения устройств к сети. ' +
@@ -168,10 +183,11 @@ const PRODUCTS = [
   },
 
   {
-    id: 'flash-drive 64 gb',
+    id: 'flash-drive-64gb',
     title: 'Флеш-накопитель',
     price: 1500,
-    image: 'image/flash-drive.jpg',
+    image: 'image/flash_drive.jpg',
+    category: 'storage',
     short: '64 ГБ флеш-накопитель для хранения данных.',
     description:
       'Флеш-накопитель объёмом 64 ГБ для хранения данных. ' +
@@ -204,8 +220,8 @@ const REVIEWS = {
   ],
   'iphone-15': [
   ],
-  'Enthernet-кабель': [
+  'ethernet-cable': [
   ],
-  'flash-drive 64 gb': [
+  'flash-drive-64gb': [
   ]
 };
