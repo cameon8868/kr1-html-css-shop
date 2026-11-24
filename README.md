@@ -19,12 +19,16 @@
 - `js/shop.js` — корзина и переключение темы;
 - `js/consultant.js` — автоматический консультант;
 - `image/` — изображения товаров и логотип;
+- `.github/workflows/pages.yml` — автоматическая публикация на GitHub Pages;
 - `README.md` — описание проекта;
 - `.gitignore` — список файлов, исключённых из Git.
+
 ## Используемые технологии
 
 - HTML;
 - CSS;
+- JavaScript;
+- GitHub Actions для публикации;
 - Git;
 - GitHub.
 
@@ -124,6 +128,19 @@
 ## Ссылка на опубликованный проект
 
 GitHub Pages: https://cameon8868.github.io/kr1-html-css-shop/
+
+## Публикация на GitHub Pages
+
+Сайт публикуется автоматически при каждом push в ветку `main` через GitHub Actions.
+
+Чтобы включить публикацию:
+
+1. Откройте настройки репозитория на GitHub.
+2. Перейдите в **Settings → Pages**.
+3. В поле **Build and deployment → Source** выберите **GitHub Actions**.
+4. Отправьте изменения в ветку `main` и проверьте выполнение workflow **Deploy static site to GitHub Pages** во вкладке **Actions**.
+
+Все пути к страницам, стилям, скриптам и изображениям заданы относительно корня сайта, поэтому работают и на адресе проекта с подкаталогом `/kr1-html-css-shop/`.
 
 ## Автор
 
